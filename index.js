@@ -13,6 +13,11 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
+
+  app.get('/api/ping', (req, res) => {
+    res.json({ message: '✅ Pong!' });
+  });
+
 app.get('/api/quotes', async (req, res) => {
   try {
     const quotes = await Quote.find({});
